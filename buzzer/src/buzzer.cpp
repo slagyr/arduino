@@ -26,10 +26,10 @@ void loop() {
 
 
 unsigned long whole = 600;
-unsigned long threeQuarters = 450;
-unsigned long half = 300;
-unsigned long quarter = 150;
-unsigned long eigth = 75;
+unsigned long threeQuarters = (unsigned long)(whole * 0.75);
+unsigned long half = (unsigned long)(whole * 0.5);
+unsigned long quarter = (unsigned long)(whole * 0.25);
+unsigned long eigth = (unsigned long)(whole * 0.125);
 
 void playPassive() {
     note(NOTE_E5, threeQuarters);
