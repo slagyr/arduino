@@ -1,0 +1,6 @@
+.pioenvs
+.piolibdeps
+.DS_Store
+/examples
+/*.pdf
+cmake-build-debug

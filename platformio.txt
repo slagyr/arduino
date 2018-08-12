@@ -1,0 +1,16 @@
+# create a new project
+mkdir FOO
+cd FOO
+pio init --ide clion --board megaatmega2560
+touch src/FOO.c
+
+# Init commands
+platformio init --board=megaatmega2560
+platformio init --ide clion --board megaatmega2560
+platformio init --ide clion --board megaatmega2560 -d foo
+
+# Compile?
+pio run
+
+# Upload to board
+pio run --target upload
