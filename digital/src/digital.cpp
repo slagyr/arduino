@@ -1,70 +1,29 @@
 #include "Arduino.h"
 
-// Define Pins
-#define BLUE 3
-#define GREEN 5
-#define RED 6
-#define delayTime 10 // fading time between colors
+uint8_t ledPin = 5;
+uint8_t buttonA = 9;
+uint8_t buttonB = 8;
 
-// define variables
-int redValue;
-int greenValue;
-int blueValue;
-
-void cycleColors();
-
-void fade(short rMod, short gMod, short bMod);
-
-void setColor(u8 r, u8 g, u8 b);
+bool isPressed(uint8_t pin);
 
 void setup() {
     Serial.begin(9600);
-    pinMode(RED, OUTPUT);
-    pinMode(GREEN, OUTPUT);
-    pinMode(BLUE, OUTPUT);
-    digitalWrite(RED, HIGH);
-    digitalWrite(GREEN, LOW);
-    digitalWrite(BLUE, LOW);
-
+    pinMode(ledPin, OUTPUT);
+    pinMode(buttonA, INPUT_PULLUP);
+    pinMode(buttonB, INPUT_PULLUP);
 }
 
 void loop() {
-    Serial.println("Beginning");
-    setColor(0, 0, 0);
-    cycleColors();
+    bool aPressed = isPressed(buttonA);
+    bool bPressed = isPressed(buttonB);
+    Serial.print("aPressed: ");
+    Serial.println(aPressed);
+    Serial.print("bPressed: ");
+    Serial.println(bPressed);
+    if (aPressed)
+        digitalWrite(ledPin, HIGH);
+    if (bPressed)
+        digitalWrite(ledPin, LOW);
 }
 
-void setColor(u8 r, u8 g, u8 b) {
-    Serial.print("setColor: ");
-    Serial.print(r);
-    Serial.print(", ");
-    Serial.print(g);
-    Serial.print(", ");
-    Serial.println(b);
-    analogWrite(RED, r);
-    analogWrite(GREEN, g);
-    analogWrite(BLUE, b);
-}
-
-void cycleColors() {
-    Serial.println("red to green");
-    fade(-1, 1, 0);
-    Serial.println("green to blue");
-    fade(0, -1, 1);
-    Serial.println("blue to red");
-    fade(1, 0, -1);
-}
-
-void fade(short rMod, short gMod, short bMod) {
-    short r = rMod == -1 ? 255 : 0;
-    short g = gMod == -1 ? 255 : 0;
-    short b = bMod == -1 ? 255 : 0;
-    for (int i = 0; i < 255; i++) {
-        r += rMod;
-        g += gMod;
-        b += bMod;
-        setColor(r, g, b);
-    }
-    delay(delayTime);
-}
-
+bool isPressed(uint8_t pin) { return digitalRead(pin) == LOW; }

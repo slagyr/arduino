@@ -51,4 +51,5 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+message("SRC_LIST " ${SRC_LIST})
 add_executable(${PROJECT_NAME} ${SRC_LIST})
