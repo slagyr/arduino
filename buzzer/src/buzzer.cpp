@@ -33,7 +33,7 @@ unsigned long eigth = 75;
 
 void playPassive() {
     note(NOTE_E5, threeQuarters);
-    note(NOTE_D5, eigth);
+    note(NOTE_D5, quarter);
     note(NOTE_C5, half);
     note(NOTE_D5, half);
     note(NOTE_E5, half);
@@ -47,7 +47,7 @@ void playPassive() {
     note(NOTE_G5, whole);
 
     note(NOTE_E5, threeQuarters);
-    note(NOTE_D5, eigth);
+    note(NOTE_D5, quarter);
     note(NOTE_C5, half);
     note(NOTE_D5, half);
     note(NOTE_E5, half);
